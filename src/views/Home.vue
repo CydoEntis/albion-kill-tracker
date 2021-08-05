@@ -28,7 +28,7 @@ export default {
   width: 80%;
   margin: 0 auto;
   padding: 10px 0;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgb(41, 41, 41);
 
   form {
     input {

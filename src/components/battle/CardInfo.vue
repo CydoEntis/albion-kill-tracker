@@ -90,7 +90,7 @@
         <img
           loading="lazy"
           onerror="this.src='https://images.reverb.com/image/upload/s--pjktruaP--/t_card-square/v1561460375/mfsvkxqzs0i1u6zaswdd.jpg'"
-          :src="equipment.poison"
+          :src="equipment.potion"
           alt=""
         />
       </div>
@@ -115,8 +115,8 @@ export default {
 <style lang="scss" scoped>
 .killer,
 .victim {
-  max-width: 625px;
-  width: 50%;
+  max-width: 725px;
+  /* width: 50%; */
   padding-left: 10px;
 }
 
