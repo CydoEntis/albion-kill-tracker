@@ -1,51 +1,42 @@
 <template>
   <div class="home">
-    <form @submit.prevent="fetchPlayer">
-      <input type="text" v-model="username" />
-      <p>{{ getPlayerInfo.id }}</p>
-      <p>{{ getPlayerInfo.username }}</p>
-      <p>{{ getPlayerInfo.guild }}</p>
-      <p>{{ getPlayerInfo.alliance }}</p>
-      <p>{{ getPlayerInfo.killFame }}</p>
-    </form>
-
-    <div v-for="battle in getRecentBattles" :key="battle.id">
-      <p>{{ battle.id }}</p>
-      <p>{{ battle.username }}</p>
-      <p>{{ battle.guild }}</p>
-      <p>{{ battle.killFame }}</p>
-      <p>{{ battle.itemPower }}</p>
+    <div class="wrapper">
+      <form @submit.prevent="test">
+        <input type="text" placeholder="Find A Player" v-model="username" />
+      </form>
     </div>
-    <!-- <button @click="fetchRecentKills">Get Kills</button> -->
+    <battle-card />
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import BattleCard from "../components/battle/BattleCard.vue";
 
 export default {
   name: "Home",
-  components: {},
+  components: { BattleCard },
   data() {
     return {
       username: "",
     };
   },
-  computed: {
-    ...mapGetters(["getPlayerInfo", "getRecentBattles"]),
-  },
-  methods: {
-    async fetchPlayer() {
-      await this.$store.dispatch("findPlayer", {
-        username: this.username,
-      });
-    },
-    fetchRecentKills() {
-      this.$store.dispatch("fetchRecentKills");
-    },
-  },
-  created() {
-    this.fetchRecentKills();
-  },
 };
 </script>
+
+<style lang="scss" scoped>
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px 0;
+  border-bottom: 1px solid grey;
+
+  form {
+    input {
+      width: 250px;
+      height: 30px;
+      border: none;
+      outline: none;
+    }
+  }
+}
+</style>
