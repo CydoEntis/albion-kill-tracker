@@ -25,7 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding: 10px 0;
   border-bottom: 1px solid rgb(41, 41, 41);
@@ -36,6 +36,10 @@ export default {
       height: 30px;
       border: none;
       outline: none;
+      background: transparent;
+      color: white;
+      border: 1px solid grey;
+      padding-left: 5px;
     }
   }
 }

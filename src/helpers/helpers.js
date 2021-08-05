@@ -1,3 +1,5 @@
+// ? Move to Mutations for recent-kills
+
 export default function fetchEquipmentImages(data) {
 	let equipment = {};
 

@@ -115,7 +115,7 @@ export default {
 <style lang="scss" scoped>
 .killer,
 .victim {
-  max-width: 725px;
+  max-width: 670px;
   /* width: 50%; */
   padding-left: 10px;
 }
