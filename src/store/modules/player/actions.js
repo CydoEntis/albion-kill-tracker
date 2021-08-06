@@ -13,6 +13,8 @@ export default {
 			killFame: formatFame.format(data.players[0].KillFame),
 		};
 
+		console.log(playerInfo);
+
 		context.commit("setPlayerInfo", playerInfo);
 	},
 };

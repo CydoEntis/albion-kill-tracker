@@ -1,20 +1,18 @@
 <template>
-  <div class="home">
-    <the-search-bar @findPlayer="findPlayer($event)" />
-    <the-loading-spinner v-if="isFetchingRecentKills" />
-    <battle-card v-else :battles="getRecentBattles" />
-  </div>
+  <the-search-bar @findPlayer="findPlayer($event)" />
+  <the-loading-spinner v-if="isFetchingRecentKills" />
+  <battle-card v-else :battles="getRecentBattles" />
 </template>
 
 <script>
-import BattleCard from "../components/battle/BattleCard.vue";
-import TheSearchBar from "../components/search/TheSearchBar.vue";
+import BattleCard from "../battle/BattleCard.vue";
+import TheSearchBar from "../search/TheSearchBar.vue";
 
 import { mapGetters } from "vuex";
-import TheLoadingSpinner from "../components/ui/spinner/TheLoadingSpinner.vue";
+import TheLoadingSpinner from "../ui/spinner/TheLoadingSpinner.vue";
 
 export default {
-  name: "Home",
+  name: "RecentKills",
   components: { BattleCard, TheSearchBar, TheLoadingSpinner },
   data() {
     return {
@@ -26,7 +24,6 @@ export default {
   methods: {
     findPlayer(username) {
       this.isFetchingPlayer = true;
-
       try {
         this.$store.dispatch("findPlayer", {
           username: username,
@@ -35,10 +32,12 @@ export default {
         this.error = e.message || "Unable to retrieve player";
       }
 
+      this.$router.replace("/results");
       this.isFetchingPlayer = false;
     },
     async fetchRecentKills() {
       this.isFetchingRecentKills = true;
+      this.hidden = false;
       try {
         await this.$store.dispatch("fetchRecentKills");
       } catch (e) {
@@ -58,8 +57,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-p {
-  color: white;
-  font-size: 72px;
-}
 </style>

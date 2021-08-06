@@ -5,8 +5,6 @@ export default {
 		const res = await fetch(`http://localhost:8080/api/gameinfo/events`);
 		const data = await res.json();
 
-		console.log(data);
-
 		const recentBattles = [];
 
 		for (let i = 0; i < data.length; i++) {
@@ -31,7 +29,6 @@ export default {
 			};
 
 			recentBattles.push(recentBattle);
-			console.log(recentBattle);
 		}
 
 		context.commit("setRecentBattles", recentBattles);
