@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
-    <router-link to="/">Recent Kills</router-link> |
-    <router-link to="/results">Search</router-link>
+    <router-link to="/">About</router-link> |
+    <router-link to="/kill-feed">Kill Feed</router-link>
   </div>
   <router-view />
 </template>
@@ -27,14 +27,25 @@ body {
 
 #nav {
   padding: 30px;
+  text-align: right;
 
   a {
     font-weight: bold;
-    color: #2c3e50;
-
+    color: #fff;
+    text-decoration: none;
     &.router-link-exact-active {
-      color: #42b983;
+      color: rgba(118, 209, 20, 0.9108018207282913);
     }
   }
+}
+
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background-color: rgb(37, 37, 37);
+  outline: 1px solid rgb(34, 34, 34);
 }
 </style>

@@ -7,6 +7,8 @@ export default {
 
 		const recentBattles = [];
 
+		let formatFame = new Intl.NumberFormat("en-US");
+
 		for (let i = 0; i < data.length; i++) {
 			let recentBattle = {
 				id: data[i].BattleId,
@@ -14,7 +16,7 @@ export default {
 					username: data[i].Killer.Name,
 					guild: data[i].Killer.GuildName,
 					alliance: data[i].Killer.AllianceName,
-					killFame: data[i].Killer.KillFame,
+					killFame: formatFame.format(data[i].Killer.KillFame),
 					itemPower: data[i].Killer.AverageItemPower.toFixed(0),
 					equipment: fetchEquipmentImages(data[i].Killer),
 				},
@@ -22,7 +24,7 @@ export default {
 					username: data[i].Victim.Name,
 					guild: data[i].Victim.GuildName,
 					alliance: data[i].Victim.AllianceName,
-					killFame: data[i].Victim.DeathFame,
+					killFame: formatFame.format(data[i].Victim.DeathFame),
 					itemPower: data[i].Victim.AverageItemPower.toFixed(0),
 					equipment: fetchEquipmentImages(data[i].Victim),
 				},

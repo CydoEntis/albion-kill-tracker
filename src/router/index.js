@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
-import RecentKillsPage from "../pages/RecentKillsPage.vue";
-import SearchResultsPage from "../pages/SearchResultsPage.vue";
+import KillFeedPage from "../pages/KillFeedPage.vue";
+import AboutPage from "../pages/AboutPage.vue";
 
 const routes = [
 	{
 		path: "/",
-		name: "RecentKills",
-		component: RecentKillsPage,
+		name: "About",
+		component: AboutPage,
 	},
 	{
-		path: "/results",
-		name: "SearchResults",
-		component: SearchResultsPage,
+		path: "/kill-feed",
+		name: "KillFeedPage",
+		component: KillFeedPage,
 	},
 ];
 

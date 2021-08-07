@@ -1,20 +1,18 @@
 <template>
   <the-search-bar @findPlayer="findPlayer($event)" />
   <the-loading-spinner />
-  <player-info></player-info>
-  <battle-card :battles="test" />
 </template>
 
 <script>
 import BattleCard from "../battle/BattleCard.vue";
 import TheSearchBar from "../search/TheSearchBar.vue";
+import PlayerInfo from "../player-info/PlayerInfo.vue";
 
-import { mapGetters } from "vuex";
 import TheLoadingSpinner from "../ui/spinner/TheLoadingSpinner.vue";
 
 export default {
   name: "RecentKills",
-  components: { BattleCard, TheSearchBar, TheLoadingSpinner },
+  components: { BattleCard, TheSearchBar, TheLoadingSpinner, PlayerInfo },
   data() {
     return {
       isFetchingPlayer: false,
@@ -34,9 +32,6 @@ export default {
 
       this.$router.replace("/results");
       this.isFetchingPlayer = false;
-    },
-    computed: {
-      ...mapGetters(["getPlayerInfo"]),
     },
   },
 };

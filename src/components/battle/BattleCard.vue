@@ -50,7 +50,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1405px) {
   .battle-wrapper {
     flex-direction: column;
     align-items: center;
