@@ -1,11 +1,12 @@
 <template>
   <div class="container">
     <div class="user-info">
-      <p>{{ username }}</p>
       <p>
+        {{ username }}
         <span v-if="guild">[{{ alliance }}] </span>
         <span v-if="alliance">{{ guild }}</span>
       </p>
+      <p></p>
     </div>
     <div class="user-details">
       <p>Fame: {{ fame }}</p>
@@ -21,17 +22,21 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+  background: #dad8d1;
   width: 90%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 5px;
-  margin: 5px auto;
+  margin: 10px auto;
   /* border: 1px solid grey; */
 
   .user-info,
   .user-details {
-    width: 50%;
+    width: 25%;
+    background: #5f0804;
+    padding: 0 10px;
+    color: #fff;
+    font-size: 22px;
     min-width: 270px;
   }
 

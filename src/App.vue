@@ -1,10 +1,20 @@
 <template>
-  <div id="nav">
-    <router-link to="/">About</router-link> |
-    <router-link to="/kill-feed">Kill Feed</router-link>
-  </div>
+  <the-header />
   <router-view />
 </template>
+
+<script>
+import TheHeader from "./components/ui/TheHeader.vue";
+export default {
+  components: {
+    TheHeader,
+  },
+  data() {
+    return {};
+  },
+};
+</script>
+
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap");
@@ -17,35 +27,29 @@
 
 body {
   height: 100%;
-  background: #090909;
+  background: rgb(246, 245, 241);
+  background: radial-gradient(
+    circle,
+    rgba(246, 245, 241, 1) 0%,
+    rgba(222, 218, 206, 1) 100%
+  );
 }
 
 #app {
-  color: #fff;
+  color: #3c3c3c;
   font-family: "Heebo", sans-serif;
-}
-
-#nav {
-  padding: 30px;
-  text-align: right;
-
-  a {
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-    &.router-link-exact-active {
-      color: rgba(118, 209, 20, 0.9108018207282913);
-    }
-  }
 }
 
 body::-webkit-scrollbar {
   width: 1em;
 }
 
+body::-webkit-scrollbar-track {
+  background: #dad8d1;
+}
+
 body::-webkit-scrollbar-thumb {
-  border-radius: 15px;
-  background-color: rgb(37, 37, 37);
-  outline: 1px solid rgb(34, 34, 34);
+  background-color: #c9c7c2;
+  outline: 2px solid #c9c7c2;
 }
 </style>

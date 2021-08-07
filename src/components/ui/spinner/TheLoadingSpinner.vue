@@ -44,7 +44,7 @@ export default {};
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #a0e400;
+  background: #5f0804;
   animation: ldio-1c97jpjgh8c 1s linear infinite;
 }
 .ldio-1c97jpjgh8c div:nth-child(1) > div {

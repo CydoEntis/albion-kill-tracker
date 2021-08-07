@@ -118,30 +118,31 @@ export default {
   max-width: 670px;
   /* width: 50%; */
   padding-left: 10px;
+  background: #dad8d1;
 }
 
 .killer {
-  background: linear-gradient(
+  /* background: linear-gradient(
     338deg,
     rgba(138, 255, 10, 1) 1%,
     rgba(118, 209, 20, 0.9108018207282913) 21%,
     rgba(101, 169, 28, 0.7595413165266106) 32%,
     rgba(85, 130, 36, 0) 100%
-  );
+  ); */
   border: 1px solid rgb(149, 212, 0);
   border-left: 10px solid rgb(149, 212, 0);
 }
 
 .victim {
-  background: linear-gradient(
+  /* background: linear-gradient(
     338deg,
     rgba(255, 125, 10, 1) 1%,
     rgba(209, 99, 20, 0.9108018207282913) 21%,
     rgba(169, 89, 28, 0.7595413165266106) 32%,
     rgba(130, 91, 36, 0) 100%
-  );
+  ); */
   border: 1px solid rgb(212, 60, 0);
-  border-left: 10px solid rgb(212, 60, 0);
+  border-right: 10px solid rgb(212, 60, 0);
 }
 
 .user-details {

@@ -4,7 +4,10 @@ import getters from "./getters";
 
 export default {
 	state() {
-		return {};
+		return {
+			recentKills: [],
+			topKills: [],
+		};
 	},
 	mutations,
 	actions,

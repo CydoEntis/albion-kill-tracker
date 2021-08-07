@@ -10,6 +10,9 @@
         :itemPower="battle.killer.itemPower"
         :equipment="battle.killer.equipment"
       />
+      <div class="seperator">
+        <h3>Vs.</h3>
+      </div>
       <card-info
         :isKiller="false"
         :username="battle.victim.username"
@@ -44,9 +47,16 @@ export default {
   margin: 0 auto;
 
   .battle-wrapper {
-    /* max-width: 1200px; */
-    margin: 15px auto;
+    margin: 5px auto;
     display: flex;
+
+    .seperator {
+      padding: 0 10px;
+      background: #c9c7c2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 
@@ -54,6 +64,10 @@ export default {
   .battle-wrapper {
     flex-direction: column;
     align-items: center;
+
+    .seperator {
+      width: 100%;
+    }
   }
 }
 </style>

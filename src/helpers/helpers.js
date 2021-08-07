@@ -1,6 +1,6 @@
 // ? Move to Mutations for recent-kills
 
-export default function fetchEquipmentImages(data) {
+export function fetchEquipmentImages(data) {
 	let equipment = {};
 
 	if (data.Equipment.MainHand === null) equipment.mainHand = require("@/assets/placeholder.png");

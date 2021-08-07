@@ -6,7 +6,8 @@ export default {
 	state() {
 		return {
 			playerInfo: {},
-			recentPlayerBattles: [],
+			recentPlayerKills: [],
+			recentPlayerDeaths: [],
 		};
 	},
 	mutations,

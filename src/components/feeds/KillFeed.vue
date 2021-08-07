@@ -1,19 +1,31 @@
 <template>
-  <the-search-bar @findPlayer="findPlayer($event)" />
-  <div class="recent-kills" v-if="!isShowingPlayerFeed">
-    <the-loading-spinner v-if="isLoadingRecentKills" />
-    <feed v-else :battles="getRecentBattles" />
+  <the-search-bar
+    @findPlayer="findPlayer($event)"
+    @fetchRecentKills="fetchRecentKills"
+    @fetchTopKills="fetchTopKills"
+  />
+  <the-loading-spinner v-if="isLoading" />
+  <div v-else-if="error">
+    <h3>Unable to Fetch Data</h3>
   </div>
-  <div class="player-kills" v-else>
-    <the-loading-spinner v-if="isLoadingPlayerKills" />
-    <div v-else class="player-feed">
-      <player-info
-        :username="getPlayerInfo.username"
-        :alliance="getPlayerInfo.alliance"
-        :guild="getPlayerInfo.guild"
-        :fame="getPlayerInfo.killFame"
-      />
-      <feed :battles="getPlayersRecentBattles" />
+  <div class="content" v-else>
+    <div class="recent-kills" v-if="isShowingRecentKills">
+      <feed :battles="getRecentKills" />
+    </div>
+    <div class="top-kills" v-if="isShowingTopBattles">
+      <feed :battles="getTopKills" />
+    </div>
+
+    <div class="player-kills" v-if="isShowingPlayerFeed && !isLoading">
+      <div class="player-feed">
+        <player-info
+          :username="getPlayerInfo.username"
+          :alliance="getPlayerInfo.alliance"
+          :guild="getPlayerInfo.guild"
+          :fame="getPlayerInfo.killFame"
+        />
+        <feed :battles="getPlayersRecentKills" />
+      </div>
     </div>
   </div>
 </template>
@@ -31,16 +43,30 @@ export default {
   components: { TheSearchBar, TheLoadingSpinner, PlayerInfo, Feed },
   data() {
     return {
-      isLoadingRecentKills: false,
-      isLoadingPlayerKills: false,
+      isLoading: false,
+      isShowingRecentKills: false,
+      isShowingTopBattles: false,
+      isShowingTopPlayers: false,
+
+      isShowingPlayerKills: false,
       isShowingPlayerFeed: false,
+
       error: null,
     };
   },
   methods: {
+    resetDisplays() {
+      this.error = null;
+
+      this.isLoading = true;
+
+      this.isShowingRecentKills = false;
+      this.isShowingTopBattles = false;
+      this.isShowingTopPlayers = false;
+      this.isShowingPlayerKills = false;
+    },
     async findPlayer(username) {
-      this.isLoadingPlayerKills = true;
-      this.isShowingPlayerFeed = true;
+      this.resetDisplays();
 
       try {
         await this.$store.dispatch("findPlayer", {
@@ -53,18 +79,40 @@ export default {
       let userId = this.getPlayerInfo.id;
 
       try {
-        await this.$store.dispatch("fetchPlayersRecentBattles", {
+        await this.$store.dispatch("fetchPlayersRecentKills", {
           id: userId,
         });
       } catch (e) {
         this.error = e.message || "Unable to fetch recent kills.";
       }
 
-      this.isLoadingPlayerKills = false;
+      try {
+        await this.$store.dispatch("fetchPlayersRecentDeaths", {
+          id: userId,
+        });
+      } catch (e) {
+        this.error = e.message || "Unable to fetch recent deaths.";
+      }
+
+      this.isLoading = false;
+      this.isShowingPlayerFeed = true;
+    },
+    async fetchTopKills() {
+      this.resetDisplays();
+
+      console.log("Recent kills Working");
+
+      try {
+        await this.$store.dispatch("fetchTopKills");
+      } catch (e) {
+        this.error = e.message || "Failed to fetch top battles";
+      }
+
+      this.isLoading = false;
+      this.isShowingTopBattles = true;
     },
     async fetchRecentKills() {
-      this.isShowingPlayerFeed = false;
-      this.isLoadingRecentKills = true;
+      this.resetDisplays();
 
       try {
         await this.$store.dispatch("fetchRecentKills");
@@ -72,17 +120,21 @@ export default {
         this.error = e.message || "Failed to fetch recent kills";
       }
 
-      this.isLoadingRecentKills = false;
+      this.isLoading = false;
+      this.isShowingRecentKills = true;
     },
   },
+
   created() {
     this.fetchRecentKills();
   },
   computed: {
     ...mapGetters([
-      "getRecentBattles",
-      "getPlayersRecentBattles",
+      "getRecentKills",
+      "getPlayersRecentKills",
+      "getPlayersRecentDeaths",
       "getPlayerInfo",
+      "getTopKills",
     ]),
   },
 };

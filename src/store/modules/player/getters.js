@@ -2,7 +2,10 @@ export default {
 	getPlayerInfo(state) {
 		return state.playerInfo;
 	},
-	getPlayersRecentBattles(state) {
-		return state.recentPlayerBattles;
+	getPlayersRecentKills(state) {
+		return state.recentPlayerKills;
+	},
+	getPlayersRecentDeaths(state) {
+		return state.recentPlayerDeaths;
 	},
 };

@@ -1,12 +1,12 @@
 <template>
-  <battle-card :battles="getRecentBattles" />
+  <battle-card :battles="battles" />
 </template>
 
 <script>
 import BattleCard from "../battle/BattleCard.vue";
 
 export default {
-  props: ["getRecentBattles"],
+  props: ["battles"],
   components: {
     BattleCard,
   },
