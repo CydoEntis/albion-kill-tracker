@@ -79,6 +79,7 @@ export default {
   border-bottom: 1px solid rgb(41, 41, 41);
 
   form {
+    margin-top: 75px;
     display: flex;
     justify-content: space-between;
 

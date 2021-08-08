@@ -1,5 +1,5 @@
 module.exports = {
 	devServer: {
-		proxy: "https://gameinfo.albiononline.com/",
+		proxy: "https://cors-anywhere.herokuapp.com/https://gameinfo.albiononline.com/",
 	},
 };

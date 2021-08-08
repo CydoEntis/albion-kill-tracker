@@ -2,7 +2,9 @@ import { fetchEquipmentImages } from "../../../helpers/helpers";
 
 export default {
 	async fetchRecentKills(context) {
-		const res = await fetch(`http://localhost:8080/api/gameinfo/events`);
+		const res = await fetch(`http://localhost:8080/api/gameinfo/events`, {
+			mode: "no-cors",
+		});
 		const data = await res.json();
 
 		const kills = [];
