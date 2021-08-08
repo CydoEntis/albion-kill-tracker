@@ -7,7 +7,7 @@ Albion Kill Tracker is a 3rd party tool used to track your friends kills or just
 #### Technologies
 
 Vue Js
-API: https://www.amiiboapi.com/
+API: https://www.tools4albion.com/api_info.php
 
 #### Features
 
