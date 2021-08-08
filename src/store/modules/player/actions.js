@@ -2,9 +2,7 @@ import { fetchEquipmentImages } from "../../../helpers/helpers";
 
 export default {
 	async findPlayer(context, payload) {
-		const res = await fetch(
-			`https://gameinfo.albiononline.com/api/gameinfo/search?q=${payload.username}`
-		);
+		const res = await fetch(`http://localhost:8080/api/gameinfo/search?q=${payload.username}`);
 		const data = await res.json();
 
 		console.log(data);
@@ -24,9 +22,7 @@ export default {
 		context.commit("setPlayerInfo", playerInfo);
 	},
 	async fetchPlayersRecentKills(context, payload) {
-		const res = await fetch(
-			`https://gameinfo.albiononline.com/api/gameinfo/players/${payload.id}/kills`
-		);
+		const res = await fetch(`http://localhost:8080/api/gameinfo/players/${payload.id}/kills`);
 		const data = await res.json();
 
 		const kills = [];
@@ -60,9 +56,7 @@ export default {
 		context.commit("setPlayersRecentKills", kills);
 	},
 	async fetchPlayersRecentDeaths(context, payload) {
-		const res = await fetch(
-			`https://gameinfo.albiononline.com/api/gameinfo/players/${payload.id}/deaths`
-		);
+		const res = await fetch(`http://localhost:8080/api/gameinfo/players/${payload.id}/deaths`);
 		const data = await res.json();
 
 		const kills = [];
