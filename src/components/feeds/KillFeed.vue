@@ -64,6 +64,7 @@ export default {
       this.isShowingTopBattles = false;
       this.isShowingTopPlayers = false;
       this.isShowingPlayerKills = false;
+      this.isShowingPlayerFeed = false;
     },
     async findPlayer(username) {
       this.resetDisplays();
