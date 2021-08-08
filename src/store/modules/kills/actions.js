@@ -2,9 +2,9 @@ import { fetchEquipmentImages } from "../../../helpers/helpers";
 
 export default {
 	async fetchRecentKills(context) {
-		const res = await fetch(`http://localhost:8080/api/gameinfo/events`, {
-			mode: "no-cors",
-		});
+		const res = await fetch(
+			`https://cors-anywhere.herokuapp.com/https://gameinfo.albiononline.com/api/gameinfo/events`
+		);
 		const data = await res.json();
 
 		const kills = [];
@@ -39,7 +39,7 @@ export default {
 	},
 	async fetchTopKills(context) {
 		const res = await fetch(
-			`http://localhost:8080/api/gameinfo/events/killfame?range=week&offset=0&limit=10`
+			`https://cors-anywhere.herokuapp.com/https://gameinfo.albiononline.com/api/gameinfo/events/killfame?range=week&offset=0&limit=10`
 		);
 		const data = await res.json();
 
