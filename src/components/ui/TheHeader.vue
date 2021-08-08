@@ -16,6 +16,7 @@ export default {};
 
 <style scoped lang="scss">
 #nav {
+  position: fixed;
   width: 100%;
   display: flex;
   align-items: center;
