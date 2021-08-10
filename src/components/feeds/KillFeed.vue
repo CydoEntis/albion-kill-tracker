@@ -101,8 +101,6 @@ export default {
     async fetchTopKills() {
       this.resetDisplays();
 
-      console.log("Recent kills Working");
-
       try {
         await this.$store.dispatch("fetchTopKills");
       } catch (e) {

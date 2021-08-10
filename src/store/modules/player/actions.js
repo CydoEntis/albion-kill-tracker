@@ -1,13 +1,12 @@
 import { fetchEquipmentImages } from "../../../helpers/helpers";
 
+const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
+
 export default {
 	async findPlayer(context, payload) {
-		const res = await fetch(
-			`https://cors-anywhere.herokuapp.com/https://gameinfo.albiononline.com/api/gameinfo/search?q=${payload.username}`
-		);
+		const apiUrl = `https://gameinfo.albiononline.com/api/gameinfo/search?q=${payload.username}`;
+		const res = await fetch(proxyUrl + apiUrl);
 		const data = await res.json();
-
-		console.log(data);
 
 		let formatFame = new Intl.NumberFormat("en-US");
 
@@ -19,14 +18,11 @@ export default {
 			killFame: formatFame.format(data.players[0].KillFame),
 		};
 
-		console.log(playerInfo);
-
 		context.commit("setPlayerInfo", playerInfo);
 	},
 	async fetchPlayersRecentKills(context, payload) {
-		const res = await fetch(
-			`https://cors-anywhere.herokuapp.com/https://gameinfo.albiononline.com/api/gameinfo/players/${payload.id}/kills`
-		);
+		const apiUrl = `https://gameinfo.albiononline.com/api/gameinfo/players/${payload.id}/kills`;
+		const res = await fetch(proxyUrl + apiUrl);
 		const data = await res.json();
 
 		const kills = [];
@@ -60,9 +56,8 @@ export default {
 		context.commit("setPlayersRecentKills", kills);
 	},
 	async fetchPlayersRecentDeaths(context, payload) {
-		const res = await fetch(
-			`https://cors-anywhere.herokuapp.com/https://gameinfo.albiononline.com/api/gameinfo/players/${payload.id}/deaths`
-		);
+		const apiUrl = `https://gameinfo.albiononline.com/api/gameinfo/players/${payload.id}/deaths`;
+		const res = await fetch(proxyUrl + apiUrl);
 		const data = await res.json();
 
 		const kills = [];

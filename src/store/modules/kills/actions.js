@@ -1,10 +1,11 @@
 import { fetchEquipmentImages } from "../../../helpers/helpers";
 
+const proxyUrl = "https://thingproxy.freeboard.io/fetch/";
+
 export default {
 	async fetchRecentKills(context) {
-		const res = await fetch(
-			`https://cors-anywhere.herokuapp.com/https://gameinfo.albiononline.com/api/gameinfo/events`
-		);
+		const apiUrl = "https://gameinfo.albiononline.com/api/gameinfo/events";
+		const res = await fetch(proxyUrl + apiUrl);
 		const data = await res.json();
 
 		const kills = [];
@@ -38,9 +39,10 @@ export default {
 		context.commit("setRecentKills", kills);
 	},
 	async fetchTopKills(context) {
-		const res = await fetch(
-			`https://cors-anywhere.herokuapp.com/https://gameinfo.albiononline.com/api/gameinfo/events/killfame?range=week&offset=0&limit=10`
-		);
+		const apiUrl =
+			"https://gameinfo.albiononline.com/api/gameinfo/events/killfame?range=week&offset=0&limit=10";
+		const res = await fetch(proxyUrl + apiUrl);
+
 		const data = await res.json();
 
 		const kills = [];
